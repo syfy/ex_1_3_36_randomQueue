@@ -1,5 +1,7 @@
 package single_side_queue_ralph;
 
+import java.util.Random;
+
 public class SingleSideQueue {
 	public static  int SIZE = 50;
 	int[] queueContents= new int[SIZE];
@@ -23,6 +25,29 @@ public class SingleSideQueue {
 		}
 		return returnValue;
 		
+	}
+	
+	private int generateRandomIntBetweenArray(){
+		 Random rand =new Random();
+		int minimum = headIndex;
+		int maximum = tailIndex; // remove the minus one index offset
+	    int randomNum = rand.nextInt((maximum - minimum) + 1) + minimum;
+	    return randomNum;
+	}
+	
+	public int randomDeuque() throws IllegalAccessException{
+		System.out.println("Random Dequeue");
+		// swap ttail with random//
+		int randomGeneratedIndex = generateRandomIntBetweenArray();
+		int tmp = queueContents[headIndex];
+		 queueContents[headIndex] = queueContents[randomGeneratedIndex];
+		 queueContents[randomGeneratedIndex] = tmp;
+		return this.dequeue();
+	}
+	public int sample() 
+	{
+		return queueContents[generateRandomIntBetweenArray()];
+
 	}
 	
 	public int dequeue() throws IllegalAccessException{

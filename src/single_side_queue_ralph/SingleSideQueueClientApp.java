@@ -11,10 +11,19 @@ public class SingleSideQueueClientApp {
 		System.out.println("Dequeueing" +sq.dequeue());
 		System.out.println(sq.toString());
 		sq.enqueue(4);
+		sq.enqueue(8);
 		System.out.println(sq.toString());
 		System.out.println("Dequeueing" +sq.dequeue());
 		System.out.println(sq.toString());
+		System.out.println("Random Element " +sq.sample());
+		System.out.println("Random Dequeue " +sq.randomDeuque());
+		sq.enqueue(9);
+		System.out.println(sq.toString());
+		System.out.println("Random Dequeue " +sq.randomDeuque());
+		System.out.println(sq.toString());
 
+
+		
 	}
 
 }
