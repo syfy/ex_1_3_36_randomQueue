@@ -21,8 +21,12 @@ public class SingleSideQueueClientApp {
 		System.out.println(sq.toString());
 		System.out.println("Random Dequeue " +sq.randomDeuque());
 		System.out.println(sq.toString());
-
-
+		System.out.println(sq.toString());
+		System.out.println("Iterator test");
+		for(Object t :sq ){
+			
+			System.out.println((int)t);
+		}
 		
 	}
 

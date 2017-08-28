@@ -1,12 +1,37 @@
 package single_side_queue_ralph;
 
+import java.util.Iterator;
 import java.util.Random;
 
-public class SingleSideQueue {
+public class SingleSideQueue implements Iterable {
+	
 	public static  int SIZE = 50;
 	int[] queueContents= new int[SIZE];
 	int headIndex = -1;
 	int tailIndex = -1;
+	
+	private class RandomQueueIterator implements Iterator {
+		int currentIteratorIndex=headIndex;
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			if(currentIteratorIndex<=tailIndex){
+				return true;
+			}else{
+				return false;
+			}
+	
+		}
+
+		@Override
+		public Object next() {
+			int returnValue = queueContents[currentIteratorIndex++];
+		
+			return returnValue;
+		}
+		
+	}
+	
 	SingleSideQueue(int firstContent){
 		headIndex++;
 		tailIndex++;
@@ -70,5 +95,11 @@ public class SingleSideQueue {
 		}
 		return sb.toString();
 		
+	}
+
+	@Override
+	public Iterator iterator() {
+		// TODO Auto-generated method stub
+		return new RandomQueueIterator();
 	}
 }
